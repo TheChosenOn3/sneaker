@@ -32,6 +32,8 @@ func main() {
 			if err != nil {
 				configData := os.Getenv("Servers")
 
+				log.Print(configData)
+
 				if len(configData) < 0 {
 					return err
 				}
