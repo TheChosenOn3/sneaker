@@ -16,11 +16,11 @@ jobs:
         go-version: 1.18
 
     - name: Build
-      run: go build -0 build/go-app.exe
+      run: go build cmd\sneaker-server\main.go -o build\go-app.exe -v
 
     - name: Deploy to Azure
       uses: Azure/webapps-deploy@v2
       with:
-        app-name: go-on-azure-demo
+        app-name: Sneaker-dev
         package: build/
         publish-profile: ${{ secrets.azureWebAppPublishProfile }}
