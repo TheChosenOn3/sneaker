@@ -30,13 +30,7 @@ func main() {
 
 			configData, err := ioutil.ReadFile(c.Path("config"))
 			if err != nil {
-				configData := os.Getenv("Servers")
-
-				log.Print(configData)
-
-				if len(configData) < 0 {
-					return err
-				}
+				return err
 			}
 
 			err = json.Unmarshal(configData, &config)
@@ -47,10 +41,8 @@ func main() {
 			if c.IsSet("bind") {
 				config.Bind = c.String("bind")
 			}
-
 			if config.Bind == "" {
-				port := os.Getenv("HTTP_PLATFORM_PORT")
-				config.Bind = port
+				config.Bind = "localhost:7788"
 			}
 
 			return server.Run(&config)
