@@ -12,12 +12,12 @@ jobs:
 
     - name: Set up Node
       uses: actions/setup-node@v3
-        with:
+      with:
           node-version: 19.0.0
 
     - name: Set up Go
       uses: actions/setup-go@v3
-        with:
+      with:
           go-version: 1.19
 
     - name: Build UI (Yarn)
