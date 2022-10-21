@@ -30,6 +30,6 @@ jobs:
     - name: Deploy to Azure
       uses: Azure/webapps-deploy@v2
       with:
-        app-name: Sneaker-dev
+        app-name: Sneaker
         package: build/
         publish-profile: ${{ secrets.azureWebAppPublishProfile }}
