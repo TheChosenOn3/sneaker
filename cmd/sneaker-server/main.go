@@ -22,13 +22,13 @@ func main() {
 			&cli.PathFlag{
 				Name:     "config",
 				Usage:    "path to configuration file",
-				Required: false,
+				Required: true,
 			},
 		},
 		Action: func(c *cli.Context) error {
 			var config server.Config
 
-			configData, err := ioutil.ReadFile("sneaker.config.json")
+			configData, err := ioutil.ReadFile(c.Path("config"))
 			if err != nil {
 				return err
 			}
@@ -42,7 +42,7 @@ func main() {
 				config.Bind = c.String("bind")
 			}
 			if config.Bind == "" {
-				config.Bind = "localhost:8080"
+				config.Bind = "localhost:7788"
 			}
 
 			return server.Run(&config)

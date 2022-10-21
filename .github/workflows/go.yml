@@ -24,6 +24,9 @@ jobs:
       run: |
           yarn install --immutable-cache --check-cache && yarn build
 
+    - name: Build Application (GO)
+      run: $env:GOOS="linux"; $env:GOARCH="amd64"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
+
     - name: Deploy to Azure
       uses: Azure/webapps-deploy@v2
       with:
