@@ -24,9 +24,6 @@ jobs:
       run: |
           yarn install --immutable-cache --check-cache && yarn build
 
-    - name: Build Backend with Frontend (GO)
-      run: $env:GOOS="linux"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
-
     - name: Deploy to Azure
       uses: Azure/webapps-deploy@v2
       with:
