@@ -22,7 +22,7 @@ jobs:
 
     - name: Build UI (Yarn)
       run: |
-          yarn install --immutable-cache --check-cache && yarn build -c update:local
+          yarn install --immutable-cache --check-cache && yarn build
 
     - name: Build Backend with Frontend (GO)
       run: $env:GOOS="linux"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
