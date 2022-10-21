@@ -22,10 +22,10 @@ jobs:
 
     - name: Build UI (Yarn)
       run: |
-          yarn install --immutable-cache --check-cache && yarn build
+          yarn install --immutable-cache --check-cache && yarn build -c update:local
 
     - name: Build Backend with Frontend (GO)
-      run: $env:GOOS="linux"; $env:GOARCH="amd64"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
+      run: $env:GOOS="linux"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
 
     - name: Deploy to Azure
       uses: Azure/webapps-deploy@v2
