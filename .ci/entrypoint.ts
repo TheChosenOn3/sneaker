@@ -28,7 +28,7 @@ export async function build(
   const res = await Docker.run(
     "mkdir /tmp/build && mv cmd dist server assets.go go.mod go.sum /tmp/build && cd /tmp/build && go build -o sneaker cmd/sneaker-server/main.go && mv sneaker /",
     {
-      image: `golang:1.17`,
+      image: `golang:1.19`,
       copy: ["cmd/**", "dist/**", "server/**", "assets.go", "go.mod", "go.sum"],
       env: [`GOOS=${os || "linux"}`, `GOARCH=${arch || "amd64"}`],
     },

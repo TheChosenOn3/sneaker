@@ -10,12 +10,22 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Set up Node
+      uses: actions/setup-node@v3
+        with:
+          node-version: 19.0.0
+
     - name: Set up Go
       uses: actions/setup-go@v3
-      with:
-        go-version: 1.18
+        with:
+          go-version: 1.19
 
-    - name: Build
+    - name: Build UI (Yarn)
+      run: |
+          yarn install --immutable-cache --check-cache && \
+          yarn build
+
+    - name: Build Backend with Frontend (GO)
       run: $env:GOOS="linux"; cd cmd\sneaker-server; go build -o ../../build/go-app -v
 
     - name: Deploy to Azure
