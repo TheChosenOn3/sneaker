@@ -28,7 +28,7 @@ func main() {
 		Action: func(c *cli.Context) error {
 			var config server.Config
 
-			configData, err := ioutil.ReadFile(c.Path("config"))
+			configData, err := ioutil.ReadFile(c.Path("~/site/wwwroot/sneaker.config.json"))
 			if err != nil {
 				return err
 			}
@@ -42,7 +42,7 @@ func main() {
 				config.Bind = c.String("bind")
 			}
 			if config.Bind == "" {
-				config.Bind = "localhost:7788"
+				config.Bind = "localhost:8080"
 			}
 
 			return server.Run(&config)
