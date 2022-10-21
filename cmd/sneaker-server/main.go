@@ -22,13 +22,13 @@ func main() {
 			&cli.PathFlag{
 				Name:     "config",
 				Usage:    "path to configuration file",
-				Required: true,
+				Required: false,
 			},
 		},
 		Action: func(c *cli.Context) error {
 			var config server.Config
 
-			configData, err := ioutil.ReadFile(c.Path("~/site/wwwroot/sneaker.config.json"))
+			configData, err := ioutil.ReadFile("sneaker.config.json")
 			if err != nil {
 				return err
 			}

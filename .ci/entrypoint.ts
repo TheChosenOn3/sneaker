@@ -10,7 +10,7 @@ export async function build(
   const yarnRes = await Docker.run(
     "yarn && yarn build",
     {
-      image: "node:16",
+      image: "node:19",
       copy: [
         "dist/**",
         "src/**",
